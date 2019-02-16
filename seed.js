@@ -48,3 +48,12 @@ const categoriesList = [
                     },
 
 ]
+
+db.Post.deleteMany({}, (err, Post) => {
+console.log(`Deleted ${Post.length} ${Post}`);
+db.Post.create(categoriesList,(err, Post) => {
+    if (err) throw err;
+    console.log(`Created ${Post.length} ${Post}`);
+    process.exit();
+})
+});
