@@ -1,0 +1,24 @@
+{
+  "name": "full-stack-api-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfonzi62/Full-Stack-API-Project.git"
+  },
+  "author": "Leonardo F Michael C Rhea Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lfonzi62/Full-Stack-API-Project/issues"
+  },
+  "homepage": "https://github.com/lfonzi62/Full-Stack-API-Project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.13"
+  }
+}
