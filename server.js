@@ -14,3 +14,22 @@ app.use(express.static('public'));
 
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
+// define a root route: localhost:3000/
+app.get('/', function (req, res) {
+    res.sendFile('views/index.html' , { root : __dirname});
+  });
+
+
+
+
+
+
+
+
+app.listen(process.env.PORT || 3000, function () {
+    console.log('Book app listening at http://localhost:3000/');
+  });
+  
