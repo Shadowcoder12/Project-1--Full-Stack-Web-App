@@ -30,6 +30,6 @@ app.get('/', function (req, res) {
 
 
 app.listen(process.env.PORT || 3000, function () {
-    console.log('Book app listening at http://localhost:3000/');
+    console.log('Full Stack App listening at http://localhost:3000/');
   });
   
