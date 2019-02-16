@@ -6,7 +6,7 @@ const PostSchema = new Schema ({
     category: String,
     image: String,
     date: String,
-    comment: String
+    comment: [Comment.schema]
     });
 
 
