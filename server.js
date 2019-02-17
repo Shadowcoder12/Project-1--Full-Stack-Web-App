@@ -22,7 +22,17 @@ app.get('/', function (req, res) {
     res.sendFile('views/index.html' , { root : __dirname});
   });
 
-
+// SHOW ALL THE WISHES
+app.get('/categories', (req ,res) => {
+  
+    db.Post.find({}, (err, Posts) => {
+      if (err) {
+      console.log(err);
+      }
+      console.log(`Server route: ${Posts}`);
+      res.json(Posts);
+      });
+  })
 
 
 
