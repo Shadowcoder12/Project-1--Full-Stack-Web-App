@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
     res.sendFile('views/index.html' , { root : __dirname});
   });
 
-// SHOW ALL THE WISHES
+// SHOW ALL THE CATEGORIES
 app.get('/categories', (req ,res) => {
   
     db.Post.find({}, (err, Posts) => {
@@ -34,7 +34,27 @@ app.get('/categories', (req ,res) => {
       });
   })
 
+// SHOWS ONLY MUSIC CATEGORY
 
+  app.get('/categories/music', (req ,res) => {
+    db.Post.find({category:"Music"}, (err, Music) => {
+      if (err) {
+      console.log(err);
+      }
+      console.log(`Server route: ${Music}`);
+      res.json(Music);
+      });
+  })
+
+  app.get('/categories/sports', (req ,res) => {
+    db.Post.find({category:"Sports"}, (err, Sports) => {
+      if (err) {
+      console.log(err);
+      }
+      console.log(`Server route: ${Sports}`);
+      res.json(Sports);
+      });
+  })
 
 
 
