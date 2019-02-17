@@ -14,10 +14,6 @@ $('#Sports').append(`<li> ${title}</li>`); }
 
 const handleError = (xhr, status, errorThrown) => console.log('uh oh');
 
-
-
-
-
 $(document).ready(function(){
 
     $.ajax({
