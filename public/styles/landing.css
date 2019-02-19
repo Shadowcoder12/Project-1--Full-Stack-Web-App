@@ -1,0 +1,9 @@
+body{
+    background-image: url("../images/stairs.jpeg");
+    background-attachment: cover;
+    background-position: fixed;
+}
+
+h1 {
+    color:red;
+}
