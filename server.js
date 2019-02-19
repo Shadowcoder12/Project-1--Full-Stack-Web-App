@@ -39,6 +39,9 @@ app.get('/categories', (req ,res) => {
   app.get('/categories/music', (req ,res) => {
     res.sendFile('views/music.html' , { root : __dirname});
   })
+  app.get('/categories/sports', (req, res) => {
+    res.sendFile('views/music.html' , { root : __dirname});
+  })
 
   app.get('/categories/sports', (req ,res) => {
     db.Post.find({category:"Sports"}, (err, Sports) => {
