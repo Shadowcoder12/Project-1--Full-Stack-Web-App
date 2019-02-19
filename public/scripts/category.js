@@ -1,6 +1,6 @@
 //get the browsers url
 let urlLocation = window.location.pathname.split("/");
-alert(urlLocation)
+
 //split it into string and point at the last index (will be music or sports etc.)
 let pageCategory = urlLocation[urlLocation.length -1].toString();
 // go in and capitalize first letter of the category for the h1
