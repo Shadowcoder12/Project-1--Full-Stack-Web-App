@@ -25,13 +25,13 @@ console.log(json)
         // will need to add an Author string to the model
         if (category === pageCategory) {
             $('.posts-list').append(`
-            <div class="post-preview">
-                <h2 class="header">${title}</h2>
-                <h3>Created By: Author</h3>
-                <p>${date}</p> 
-                <img src= '${imageSrc}'>
-                <a href="/categories/music/${postId}">View More</a>
-            </div>`); 
+                <div class="post-preview">
+                    <h2 class="header">${title}</h2>
+                    <h3>Created By: Author</h3>
+                    <p>${date}</p> 
+                    <img src= '${imageSrc}'>
+                    <a href="/categories/${postId}">View More</a>
+                </div>`); 
         }
 
 
@@ -43,7 +43,7 @@ const handleError = (xhr, status, errorThrown) => console.log('Error!');
 $(document).ready(function(){
     $.ajax({
     method: 'GET',
-    url: '/categories/',
+    url: '/api/categories/',
     success: handleResponse,
     error: handleError
 });
