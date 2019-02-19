@@ -1,7 +1,3 @@
-/////////////////////////////
-//  SETUP and CONFIGURATION
-/////////////////////////////
-
 //require express in our app
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -15,16 +11,50 @@ app.use(express.static('public'));
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// =======================================================
+// STATIC HTML ROUTES
+// =======================================================
 
-
-// define a root route: localhost:3000/
+//landing page
 app.get('/', function (req, res) {
-    res.sendFile('views/landing.html' , { root : __dirname});
-  });
+  res.sendFile('views/landing.html' , { root : __dirname});
+});
 
-// SHOW ALL THE CATEGORIES
-app.get('/categories', (req ,res) => {
-  
+app.get('/categories', (req, res) => {
+  res.sendFile('/views/index.html', { root: __dirname});
+})
+
+//routes to serve category.html to different categories
+app.get('/categories/music', (req ,res) => {
+  res.sendFile('views/category.html' , { root : __dirname});
+});
+app.get('/categories/sports', (req, res) => {
+  res.sendFile('views/category.html' , { root : __dirname});
+});
+app.get('/categories/food', (req ,res) => {
+  res.sendFile('views/category.html' , { root : __dirname});
+});
+app.get('/categories/travel', (req, res) => {
+  res.sendFile('views/category.html' , { root : __dirname});
+});
+app.get('/categories/animals', (req ,res) => {
+  res.sendFile('views/category.html' , { root : __dirname});
+});
+
+// show html page for specific route
+app.get('/categories/:id', (req, res) => {
+  res.sendFile('views/post.html', {root: __dirname } );
+})
+
+
+
+
+// =======================================================
+// API ROUTES
+// =======================================================
+
+//Get ALL posts
+app.get('/api/categories', (req ,res) => {
     db.Post.find({}, (err, Posts) => {
       if (err) {
       console.log(err);
@@ -32,30 +62,21 @@ app.get('/categories', (req ,res) => {
       console.log(`Server route: ${Posts}`);
       res.json(Posts);
       });
+  });
+
+//Get a specific post
+app.get('/api/categories/:id', (req, res) => {
+  db.Post.findById(req.params.id, (err, post)=>{
+    res.json(post);
   })
-
-// SHOWS ONLY MUSIC CATEGORY
-
-  app.get('/categories/music', (req ,res) => {
-    res.sendFile('views/music.html' , { root : __dirname});
-  })
-  app.get('/categories/sports', (req, res) => {
-    res.sendFile('views/music.html' , { root : __dirname});
-  })
-
-  app.get('/categories/sports', (req ,res) => {
-    db.Post.find({category:"Sports"}, (err, Sports) => {
-      if (err) {
-      console.log(err);
-      }
-      console.log(`Server route: ${Sports}`);
-      res.json(Sports);
-      });
-  })
+});
 
 
 
 
+// =======================================================
+// LISTEN
+// =======================================================
 app.listen(process.env.PORT || 3000, function () {
     console.log('Full Stack App listening at http://localhost:3000/');
   });
