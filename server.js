@@ -19,8 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // define a root route: localhost:3000/
 app.get('/', function (req, res) {
-  res.sendFile('views/index.html' , { root : __dirname});
-});
+    res.sendFile('views/landing.html' , { root : __dirname});
+  });
 
 // SHOW ALL THE CATEGORIES
 app.get('/categories', (req ,res) => {
@@ -37,6 +37,9 @@ app.get('/categories', (req ,res) => {
 // SHOWS ONLY MUSIC CATEGORY
 
   app.get('/categories/music', (req ,res) => {
+    res.sendFile('views/music.html' , { root : __dirname});
+  })
+  app.get('/categories/sports', (req, res) => {
     res.sendFile('views/music.html' , { root : __dirname});
   })
 

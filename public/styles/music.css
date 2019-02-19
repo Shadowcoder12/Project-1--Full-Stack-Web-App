@@ -16,3 +16,23 @@ img{
 .header {
 margin-top: 10px;
 }
+
+/* POSTS */
+.posts-list {
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.post-preview {
+    border:1px solid black;
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-preview img {
+    margin: 0 auto;
+    max-width: 100%;
+}

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/postLee",{ useNewUrlParser: true });
-
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/postLee", {useMongoClient: true});
 
 
 module.exports.Post = require('./post.js');
