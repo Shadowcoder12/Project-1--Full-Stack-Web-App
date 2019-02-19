@@ -1,7 +1,9 @@
 body{
     background-image: url("../images/stairs.jpeg");
     background-attachment: cover;
+    background-repeat: no-repeat;
     background-position: fixed;
+    background-size: 100%;
 }
 
 h1 {
