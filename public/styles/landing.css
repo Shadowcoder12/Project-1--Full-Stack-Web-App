@@ -1,11 +1,21 @@
 body{
-    background-image: url("../images/stairs.jpeg");
+    background-image: url("../images/the-roaming-platypus-310824-unsplash.jpg");
     background-attachment: cover;
     background-repeat: no-repeat;
     background-position: fixed;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size:100%;
+    text-align: center;
 }
 
 h1 {
-    color:red;
+    color:black;
+    margin-top: 20%;
+}
+button{
+    margin-top: 5%;
+    width: 280px;
+}
+a{
+    color:black
 }
