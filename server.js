@@ -37,13 +37,7 @@ app.get('/categories', (req ,res) => {
 // SHOWS ONLY MUSIC CATEGORY
 
   app.get('/categories/music', (req ,res) => {
-    db.Post.find({category:"Music"}, (err, Music) => {
-      if (err) {
-      console.log(err);
-      }
-      console.log(`Server route: ${Music}`);
-      res.json(Music);
-      });
+    res.sendFile('views/music.html' , { root : __dirname});
   })
 
   app.get('/categories/sports', (req ,res) => {
