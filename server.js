@@ -23,6 +23,26 @@ app.get('/', function (req, res) {
 app.get('/categories', (req, res) => {
   res.sendFile('/views/index.html', { root: __dirname});
 })
+//get route / show new post form
+app.get('/categories/new', (req, res) => {
+  res.sendFile('/views/new_post.html', {root: __dirname});
+});
+//post route for new post form 
+app.post('/categories/new', (req, res) => {
+  let newPost = new db.Post({
+    title: req.body.title,
+    image: req.body.image,
+    category: req.body.category,
+    text: req.body.text,
+    date: 'now'
+  });
+  newPost.save((err, post) => {
+    if (err) throw err;
+    console.log(post);
+    res.redirect('/categories')
+  })
+})
+
 
 //routes to serve category.html to different categories
 app.get('/categories/music', (req ,res) => {
@@ -41,11 +61,11 @@ app.get('/categories/animals', (req ,res) => {
   res.sendFile('views/category.html' , { root : __dirname});
 });
 
+
 // show html page for specific route
 app.get('/categories/:id', (req, res) => {
   res.sendFile('views/post.html', {root: __dirname } );
-})
-
+});
 
 
 
