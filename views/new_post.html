@@ -12,7 +12,13 @@
 <!-- we should make category a dropdown list of the available options -->
     <form action="/categories/new" method="POST">
         <input type="text" name="title" placeholder="Title" />
-        <input type="text" name="category" placeholder="Category" />
+        <select name="category">
+            <option value="Music">Music</option>
+            <option value="Sports">Sports</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Animals">Animals</option>
+        </select>
         <input type="text" name="image" placeholder="Image URL" />
         <textarea name="text" id="new-post-text" cols="30" rows="10"></textarea>
         <button type="submit">Submit</button>

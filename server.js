@@ -34,11 +34,33 @@ app.post('/categories/new', (req, res) => {
     image: req.body.image,
     category: req.body.category,
     text: req.body.text,
-    date: 'now'
+    date: Date.now()
   });
   newPost.save((err, post) => {
     if (err) throw err;
-    console.log(post);
+    let redirectRoute = `/categories/${post._id}`
+    res.redirect(redirectRoute);
+  });
+})
+//route to show update post form
+app.get('/categories/:id/edit', (req, res)=> {
+  res.sendFile('/views/edit_post.html', {root: __dirname});
+});
+
+app.put('/categories/:id', (req, res)=> {
+  console.log('req.body ',req.body)
+  let redirectString = `/categories/${req.params.id}`;
+  console.log('redirectString', redirectString);
+  db.Post.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, (err, post)=>{
+    if(err) throw err
+    console.log('updated post ', post);
+    res.redirect(redirectString);
+  });
+});
+
+//delete a post
+app.get('/api/categories/:id/delete', (req, res) => {
+  db.Post.findByIdAndDelete({_id: req.params.id}, (err, deleted) => {
     res.redirect('/categories')
   })
 })
@@ -60,7 +82,6 @@ app.get('/categories/travel', (req, res) => {
 app.get('/categories/animals', (req ,res) => {
   res.sendFile('views/category.html' , { root : __dirname});
 });
-
 
 // show html page for specific route
 app.get('/categories/:id', (req, res) => {
