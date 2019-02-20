@@ -19,3 +19,7 @@ button{
 a{
     color:black
 }
+
+.googleBtn {
+    border: 10px red solid;
+}
