@@ -1,10 +1,18 @@
 //set the browsers url to this variable.. split it into an array at the /'s
 let urlLocation = window.location.pathname.split("/");
+console.log(urlLocation);
 //split it into string and point at the last index (will be music or sports etc.)
 let postId = urlLocation[urlLocation.length -1].toString();
+if(postId == "") {
+    postId = urlLocation[urlLocation.length -2].toString();
+}
+console.log(postId);
 
+//dynamically set href of delete link based on psot id
+$('#deleteLink').attr('href', `/api/categories/${postId}/delete`);
+$('#editLink').attr('href', `/categories/${postId}/edit`)
 //This will return a single json object
-const handleResponse =  (json) =>  {
+const handleResponse = (json) =>  {
 //set title h1     
 $('h1').text(`${json.title}`)
 //set image
