@@ -8,24 +8,38 @@ div{
 header{
     margin-bottom: 100px;
 }
-header h1{
-    color: red;
-}
 
-textarea{
-    width: 900px;
+ textarea{
     height: 200px;
-    display: inline-block;
-    margin-left: 30%;
 }
 
-button{
+.commentAuthor, textarea{
+    width:900px;
+}
+
+button, .postText{
     width: 70%;
-    margin-left: 40%;
-  
 }
 
 .postText{
-    width: 70%;
    display: inline-block;
 }
+
+img{
+    height:400px;
+    width: 400px;  
+}
+
+.imageDiv{
+    display:block;
+}
+
+.newComment, .imageDiv{
+    justify-content: center;
+}
+
+.userComment{
+    background:red;
+    height: 500px;
+}
+

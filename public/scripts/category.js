@@ -12,6 +12,8 @@ $('.category-header').text(`${firstLetterUppercase} Posts`)
 const handleResponse =  (json) =>  { 
     // storing the json to a variable
 // let musicData = json;
+
+
 console.log(json)
     for (var i =0 ;  i < json.length; i++) {
         let category= json[i].category.toLowerCase();
@@ -37,6 +39,9 @@ console.log(json)
 
     }
 }
+
+
+
 
 const handleError = (xhr, status, errorThrown) => console.log('Error!');
 

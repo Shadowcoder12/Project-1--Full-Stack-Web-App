@@ -7,7 +7,7 @@ const categoriesList = [
     category: "Music",
     image: "https://video-images.vice.com/articles/58755782b6948154d919afd3/lede/Indie-music-is-still-cool-art.jpg",
     date: "2/15/2018",
-    text: "India music is the best music known to man-kind. I got to indie concerts every weekend in bay area.",
+    text: "Indie music is the best music known to man-kind. I got to indie concerts every weekend in bay area.",
     comment: []
     },
 

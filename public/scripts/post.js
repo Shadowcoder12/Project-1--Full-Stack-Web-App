@@ -11,7 +11,8 @@ $('h1').text(`${json.title}`)
 $('#post-image').attr('src', `${json.image}`)
 //set paragraph text
 $('#body-text').text(`${json.text}`)
-
+//set comments 
+$('.userComment').text(`${json.commentArray}`)
 console.log(json);
 }
 
