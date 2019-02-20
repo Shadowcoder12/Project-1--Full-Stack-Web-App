@@ -69,6 +69,10 @@ app.get('/categories/:id', (req, res) => {
 
 
 
+
+
+
+
 // =======================================================
 // API ROUTES
 // =======================================================
@@ -92,6 +96,19 @@ app.get('/api/categories/:id', (req, res) => {
 });
 
 
+//adding comment 
+
+let commentArray = [];
+
+app.post('/api/categories/:id', (request, response) => {
+
+  let newComment = new db.Comment ({
+    author : request.body.author,
+    text : request.body.text,
+  })
+    commentArray.push(newComment);
+    response.json(commentArray);
+});
 
 
 // =======================================================
