@@ -1,3 +1,4 @@
+
 //set the browsers url to this variable.. split it into an array at the /'s
 let urlLocation = window.location.pathname.split("/");
 //split it into string and point at the last index (will be music or sports etc.)
@@ -11,16 +12,65 @@ $('h1').text(`${json.title}`)
 $('#post-image').attr('src', `${json.image}`)
 //set paragraph text
 $('#body-text').text(`${json.text}`)
-//set comments 
-$('.userComment').text(`${json.commentArray}`)
-console.log(json);
 }
+
+
+
+
+
+
 
 //this is the ajax error function... if theres a problem itll remove all the html and put in a p tag saying to try again
 const handleError = (xhr, status, errorThrown) => {
     $('body').html('<p>Something went wrong... go back and try again.</p><p><a href="/categories">Go to categories</a></p>')
 }
 
+
+var $commentList;
+var commentArray = [];
+
+function handlesSuccess(json) {
+    commentArray = json;
+    render();
+  }
+  
+  function handlesError(e) {
+    console.log('uh oh');
+    $('#userComment').html('Failed to load books, is the server working?');
+  }
+  
+  function newCommentSuccess(json) {
+    $('#commentForm input').val('');
+    commentArray.push(json);
+    render();
+  }
+  
+  function newCommentError() {
+    console.log('newbook error!');
+  }
+  
+  
+  function getCommentsHtml(comment) {
+    return `<hr>
+            <p>
+              <b>${comment.text}</b>
+              by ${comment.author}
+            </p>`;
+  }
+  
+  
+  function getAllCommentsHtml(comments) {
+    return comments.map(getCommentsHtml).join("");
+  }
+  
+  
+  function render () {
+    $commentList.empty();
+  }
+  
+  
+  var commentsHtml = getAllCommentsHtml(commentArray);
+ 
 $(document).ready(function(){
     $.ajax({
     method: 'GET',
@@ -28,4 +78,38 @@ $(document).ready(function(){
     success: handleResponse,
     error: handleError
 });
+
+//comments
+
+
+  $commentList = $('.userComment');
+  $.ajax({
+    method: 'GET',
+    url: '/api/categories/:id',
+    success: handlesSuccess,
+    error: handlesError
+  });
+
+  $('#commentForm').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/api/categories/:id',
+      data: $(this).serialize(),
+      success: newCommentSuccess,
+      error: newCommentError
+    });
+  });
+
+
+
+
+
+$commentList.append(commentsHtml);
+
+/////
+
+
+
+
 })

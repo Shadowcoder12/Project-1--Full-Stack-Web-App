@@ -98,17 +98,29 @@ app.get('/api/categories/:id', (req, res) => {
 
 //adding comment 
 
-let commentArray = [];
 
-app.post('/api/categories/:id', (request, response) => {
+app.post('/api/categories/:id', function (req, res) {
 
-  let newComment = new db.Comment ({
-    author : request.body.author,
-    text : request.body.text,
-  })
-    commentArray.push(newComment);
-    response.json(commentArray);
+  const newComment = new db.Comment({
+
+      text: req.body.text,
+      author:req.body.author,
+  });
+
+      newComment.save((err,newComment)=>{
+        if(err){throw err;}
+        res.json(newComment);
+      });
 });
+
+
+
+
+
+
+
+
+
 
 
 // =======================================================
