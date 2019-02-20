@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="729302438495-j1tfg2mbar3v6p717qephqfcvgfoav0n.apps.googleusercontent.com">
 
 <title>POST LEE App</title>
 
@@ -12,10 +14,14 @@
 <!-- VENDOR SCRIPTS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="/scripts/landing.js"></script>
 </head>
 <body>
 <h1>Better than Reddit, Welcome to PostLee :)</h1>
 <a href="#"><button class="btn btn-light">View More</button> </a>
+
+<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-redirecturi="https://localhost/categories"></div>
 
 </body>
 </html>
