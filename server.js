@@ -105,6 +105,8 @@ app.get('/categories/:id', isLoggedIn , (req, res) => {
   res.sendFile('views/post.html', {root: __dirname } );
 });
 
+
+
 // =======================================================
 // AUTH ROUTES
 // =======================================================
@@ -168,6 +170,7 @@ function isLoggedIn(req,res,next){
   res.redirect('/login');
 }
 
+
 // =======================================================
 // API ROUTES
 // =======================================================
@@ -191,7 +194,6 @@ app.get('/api/categories/:id', (req, res) => {
 });
 
 
-
 //adding comment 
 
 app.get('/api/comments', (req, res) => {
@@ -205,6 +207,7 @@ app.get('/api/comments', (req, res) => {
 });
 
 app.post('/api/comments', function (req, res) {
+
   let newComment = new db.Comment({
     
       text: req.body.text,
