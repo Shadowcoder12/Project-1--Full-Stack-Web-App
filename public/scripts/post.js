@@ -24,10 +24,6 @@ $('#body-text').text(`${json.text}`)
 
 
 
-
-
-
-
 //this is the ajax error function... if theres a problem itll remove all the html and put in a p tag saying to try again
 const handleError = (xhr, status, errorThrown) => {
     $('body').html('<p>Something went wrong... go back and try again.</p><p><a href="/categories">Go to categories</a></p>')
@@ -54,16 +50,16 @@ $(document).ready(function(){
   $commentsList = $('#commentTarget');
   $.ajax({
     method: 'GET',
-    url: '/api/books',
-    success: handleSuccess,
-    error: handleError
+    url: '/api/categories/:id',
+    success: handlesSuccess,
+    error: handlesError
   });
 
   $('#commentForm').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
       method: 'POST',
-      url: '/api/books',
+      url: '/api/categories/:id',
       data: $(this).serialize(),
       success: newCommentSuccess,
       error: newCommentError
@@ -74,15 +70,25 @@ $(document).ready(function(){
 });
 
 function getCommentHtml(comment) {
-  return `<hr>
+  return `
+        <div class = "commentP"
           <p>
-            <b>${comment.text}</b>
+            <b>${comment.text}</b> &nbsp
             by ${comment.author}
-            <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
-          </p>`;
+
+          </p></div>`;
+    
 }
 
+
+
+// line 82 
+//             <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
+
+
+
 function getAllCommentsHtml(comments) {
+  console.log(comments.map(getCommentHtml).join(""))
   return comments.map(getCommentHtml).join("");
 }
 
@@ -94,19 +100,20 @@ function render () {
 
   // pass `allBooks` into the template function
   var commentsHtml = getAllCommentsHtml(commentArray);
+  
 
   // append html to the view
   $commentsList.append(commentsHtml);
+  
 };
 
-function handleSuccess(json) {
+function handlesSuccess(json) {
   commentArray = json;
   render();
 }
 
-function handleError(e) {
-  console.log('uh oh');
-  $('#commentTarget').text('Failed to load books, is the server working?');
+function handlesError(e) {
+  $('#commentTarget').html('Server is not working');
 }
 
 function newCommentSuccess(json) {

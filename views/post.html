@@ -34,23 +34,22 @@
     </div>
     <h1> New Comment</h1>
 
-
-
+     
+        <div id= "userComment">
             <form method= "POST" action= "/api/categories/:id"
-            <form class="form-inline" id="commentForm"> 
-              <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" name="text" placeholder="Book title">
-              </div>
-              <div class="form-group">
-                <label for="title">Author</label>
-                <input type="text" class="form-control" name="author" placeholder="Book author">
-              </div>
-              <button type="submit" class="btn btn-default">Create book</button>
+            <form  id="commentForm"> 
+                <p><label for="title">Comment</label><br></p>
+                <p><input class ="commentInput" type="text" name="text" placeholder="Comment"></p>
+                <p><label for="title">Author</label></p>
+                <p><input type="text"  name="author" placeholder="Author"></p>
+              
+              <button type="submit" class="btn btn-default">Post Comment</button>
             </form>
+          </div>
+        
             <div id='commentTarget'>
             </div>
-
+       
 
 
 

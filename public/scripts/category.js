@@ -32,7 +32,7 @@ console.log(json)
                     <h3>Created By: Author</h3>
                     <p>${date}</p> 
                     <img src= '${imageSrc}'>
-                    <a href="/categories/${postId}">View More</a>
+                    <a href="/categories/${postId}">View Post</a>
                 </div>`); 
         }
 
