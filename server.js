@@ -25,7 +25,6 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -106,14 +105,22 @@ app.get('/categories/:id', isLoggedIn , (req, res) => {
   res.sendFile('views/post.html', {root: __dirname } );
 });
 
+
+
 // =======================================================
 // AUTH ROUTES
 // =======================================================
+
+
+app.get('/comments', (req ,res) => {
+  res.sendFile('views/comments.html' , { root : __dirname});
+});
 
 // sends user to the register forum
 app.get('/register', (req, res) => {
   res.sendFile('views/register.html', {root: __dirname } );
 });
+
 
 // password is hashed for user protection 
 app.post('/register', (req, res) =>{
@@ -162,6 +169,7 @@ function isLoggedIn(req,res,next){
   res.redirect('/login');
 }
 
+
 // =======================================================
 // API ROUTES
 // =======================================================
@@ -187,7 +195,18 @@ app.get('/api/categories/:id', (req, res) => {
 
 //adding comment 
 
-app.post('/api/categories/:id', function (req, res) {
+app.get('/api/comments', (req, res) => {
+  db.Comment.find((err, foundComments)=>{
+      if(err){
+        console.log("Index Error: " + err)
+        res.sendStatus(500);
+      }
+      res.json(foundComments);
+  });
+});
+
+app.post('/api/comments', function (req, res) {
+
   let newComment = new db.Comment({
     
       text: req.body.text,
@@ -196,17 +215,10 @@ app.post('/api/categories/:id', function (req, res) {
 
       newComment.save((err,newComment)=>{
         if(err){throw err;}
+        // res.json(newComment);
         res.json(newComment);
       });
 });
-
-
-
-
-
-
-
-
 
 // =======================================================
 // LISTEN
