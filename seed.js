@@ -60,8 +60,7 @@ db.Post.create(categoriesList,(err, Post) => {
 
 });
 
-})
-});
+
 
 db.Comment.deleteMany({}, (err, Comment) => {
     console.log(`Deleted ${Comment.length} ${Comment}`);
