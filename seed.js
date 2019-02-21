@@ -55,6 +55,20 @@ db.Post.create(categoriesList,(err, Post) => {
     if (err) throw err;
     console.log(`Created ${Post.length} ${Post}`);
     process.exit();
+
 });
 
 });
+
+})
+});
+
+db.Comment.deleteMany({}, (err, Comment) => {
+    console.log(`Deleted ${Comment.length} ${Comment}`);
+    db.Post.create(categoriesList,(err, Comment) => {
+        if (err) throw err;
+        console.log(`Created ${Comment.length} ${Comment}`);
+        process.exit();
+    })
+    });
+
