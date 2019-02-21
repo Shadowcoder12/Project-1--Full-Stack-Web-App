@@ -33,52 +33,6 @@ const handleError = (xhr, status, errorThrown) => {
     $('body').html('<p>Something went wrong... go back and try again.</p><p><a href="/categories">Go to categories</a></p>')
 }
 
-
-var $commentList;
-var commentArray = [];
-
-function handlesSuccess(json) {
-    commentArray = json;
-    render();
-  }
-  
-  function handlesError(e) {
-    console.log('uh oh');
-    $('#userComment').html('Failed to load books, is the server working?');
-  }
-  
-  function newCommentSuccess(json) {
-    $('#commentForm input').val('');
-    commentArray.push(json);
-    render();
-  }
-  
-  function newCommentError() {
-    console.log('newbook error!');
-  }
-  
-  
-  function getCommentsHtml(comment) {
-    return `<hr>
-            <p>
-              <b>${comment.text}</b>
-              by ${comment.author}
-            </p>`;
-  }
-  
-  
-  function getAllCommentsHtml(comments) {
-    return comments.map(getCommentsHtml).join("");
-  }
-  
-  
-  function render () {
-    $commentList.empty();
-  }
-  
-  
-  var commentsHtml = getAllCommentsHtml(commentArray);
- 
 $(document).ready(function(){
     $.ajax({
     method: 'GET',
@@ -87,22 +41,29 @@ $(document).ready(function(){
     error: handleError
 });
 
+})
+
+
 //comments
 
+var $commentsList;
+var commentArray = [];
 
-  $commentList = $('.userComment');
+$(document).ready(function(){
+
+  $commentsList = $('#commentTarget');
   $.ajax({
     method: 'GET',
-    url: '/api/categories/:id',
-    success: handlesSuccess,
-    error: handlesError
+    url: '/api/books',
+    success: handleSuccess,
+    error: handleError
   });
 
   $('#commentForm').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
       method: 'POST',
-      url: '/api/categories/:id',
+      url: '/api/books',
       data: $(this).serialize(),
       success: newCommentSuccess,
       error: newCommentError
@@ -110,14 +71,50 @@ $(document).ready(function(){
   });
 
 
+});
 
+function getCommentHtml(comment) {
+  return `<hr>
+          <p>
+            <b>${comment.text}</b>
+            by ${comment.author}
+            <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
+          </p>`;
+}
 
+function getAllCommentsHtml(comments) {
+  return comments.map(getCommentHtml).join("");
+}
 
-$commentList.append(commentsHtml);
+// helper function to render all posts to view
+// note: we empty and re-render the collection each time our post data changes
+function render () {
+  // empty existing posts from view
+  $commentsList.empty();
 
-/////
+  // pass `allBooks` into the template function
+  var commentsHtml = getAllCommentsHtml(commentArray);
 
+  // append html to the view
+  $commentsList.append(commentsHtml);
+};
 
+function handleSuccess(json) {
+  commentArray = json;
+  render();
+}
 
+function handleError(e) {
+  console.log('uh oh');
+  $('#commentTarget').text('Failed to load books, is the server working?');
+}
 
-})
+function newCommentSuccess(json) {
+  $('#commentForm input').val('');
+  commentArray.push(json);
+  render();
+}
+
+function newCommentError() {
+  console.log('newbook error!');
+}

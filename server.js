@@ -119,7 +119,6 @@ app.get('/api/categories/:id', (req, res) => {
 
 //adding comment 
 
-
 app.post('/api/categories/:id', function (req, res) {
 
   const newComment = new db.Comment({
@@ -133,8 +132,6 @@ app.post('/api/categories/:id', function (req, res) {
         res.json(newComment);
       });
 });
-
-
 
 
 
