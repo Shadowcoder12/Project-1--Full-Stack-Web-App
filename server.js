@@ -89,12 +89,6 @@ app.get('/categories/:id', (req, res) => {
   res.sendFile('views/post.html', {root: __dirname } );
 });
 
-
-
-
-
-
-
 // =======================================================
 // API ROUTES
 // =======================================================
@@ -117,9 +111,7 @@ app.get('/api/categories/:id', (req, res) => {
   })
 });
 
-
 //adding comment 
-
 app.post('/api/categories/:id', function (req, res) {
   let newComment = new db.Comment({
     

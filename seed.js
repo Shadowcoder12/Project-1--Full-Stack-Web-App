@@ -55,5 +55,6 @@ db.Post.create(categoriesList,(err, Post) => {
     if (err) throw err;
     console.log(`Created ${Post.length} ${Post}`);
     process.exit();
-})
+});
+
 });

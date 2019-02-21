@@ -10,41 +10,111 @@
 
 <!-- STYLESHEETS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="/styles/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="/styles/styles.css">
 <!-- VENDOR SCRIPTS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script> -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
-
-<a href="/" onclick="signOut();"><button>Sign out</button></a>
-
-<h1>Welcome to POSTLEE!</h1>
-
-<h2><a href="/categories/music">Music</a></h2>
-<ul class="Music">
-</ul>   
-
-<h2><a href="/categories/sports">Sports</a></h2>
-<ul id="Sports">
-</ul>
-
-<h2><a href="/categories/food">Food</a></h2>
-<ul id="Food">
-</ul> 
-
-<h2><a href="/categories/travel">Travel</a></h2>
-<ul id="Travel">
-</ul>   
-
-<h2><a href="/categories/animals">Animals</a></h2>
-<ul id="Animals">
-</ul>   
-<!-- APPLICATION SCRIPTS -->
-<!-- <script src="/scripts/app.js"></script> -->
-<script src="/scripts/landing.js"></script>
-
+    <nav>
+        <div class="nav-wrapper cyan darken-3">
+            <a href="#" class="brand-logo left">Postlee</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/" onclick="signOut();"><button>Sign out</button></a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Welcome to POSTLEE!</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card cyan darken-3">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <i class="large material-icons">music_note</i>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Music<i class="material-icons right">more_vert</i></span>
+                        <p><a href="/categories/music">View</a></p>              
+                    </div>
+                    <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Music Discussion<i class="material-icons right">close</i></span>
+                            <p>Comunity discussion based around all music related topics.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                    <div class="card cyan darken-3">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <i class="large material-icons">directions_run</i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Sports<i class="material-icons right">more_vert</i></span>
+                                <p><a href="/categories/sports">View</a></p>              
+                            </div>
+                            <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">Sports Discussion<i class="material-icons right">close</i></span>
+                                    <p>Comunity discussion based around all sports related topics.</p>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col s12 m6">
+                        <div class="card cyan darken-3">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <i class="large material-icons">local_dining</i>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">Food<i class="material-icons right">more_vert</i></span>
+                                    <p><a href="/categories/food">View</a></p>              
+                                </div>
+                                <div class="card-reveal">
+                                        <span class="card-title grey-text text-darken-4">Food Discussion<i class="material-icons right">close</i></span>
+                                        <p>Comunity discussion based around all food related topics.</p>
+                                </div>
+                            </div>
+                </div>
+                <div class="col s12 m6">
+                        <div class="card cyan darken-3">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <i class="large material-icons">airplanemode_active</i>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Travel<i class="material-icons right">more_vert</i></span>
+                                <p><a href="/categories/food">View</a></p>              
+                            </div>
+                            <div class="card-reveal">
+                                    <span class="card-title grey-text text-darken-4">Travel Discussion<i class="material-icons right">close</i></span>
+                                    <p>Comunity discussion based around all travel related topics.</p>
+                            </div>
+                        </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card cyan darken-3 hoverable">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <i class="large material-icons">pets</i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Animals<i class="material-icons right">more_vert</i></span>
+                            <p><a href="/categories/animals">View</a></p>              
+                        </div>
+                        <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Animal Discussion<i class="material-icons right">close</i></span>
+                                <p>Comunity discussion based around all animal related topics.</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- APPLICATION SCRIPTS -->
+    <!-- <script src="/scripts/app.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="/scripts/materialize.js"></script>
+    <script src="/scripts/landing.js"></script>
 </body>
 </html>
     
