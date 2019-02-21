@@ -6,6 +6,7 @@
 <meta name="google-signin-scope" content="profile email">
 <meta name="google-signin-client_id" content="729302438495-j1tfg2mbar3v6p717qephqfcvgfoav0n.apps.googleusercontent.com">
 
+
 <title>POST LEE App</title>
 
 <!-- STYLESHEETS -->
@@ -15,15 +16,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="/scripts/landing.js"></script>
+<!-- <script src="/scripts/landing.js"></script> -->
 </head>
 <body>
 <h1> Welcome to PostLee :)</h1>
 <!-- <a href="/categories"><button class="btn btn-light">View More</button> </a> -->
 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"
-data-scope="https://www.googleapis.com/auth/plus.login"
 data-accesstype="offline"
-data-redirecturi="http://localhost:3000/categories">  </div>
+data-redirecturi="http://localhost:3000/categories" ></div> 
+
+<a href="#" onclick="signOut();">Sign out</a>
+
+<script>
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
 
 </body>
 </html>
