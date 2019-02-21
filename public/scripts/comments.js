@@ -34,6 +34,32 @@ $(document).ready(function(){
   });
 
 
+
+  $commentList.on('click', '.edit-book-button', function() {
+    console.log('clicked edit button');
+    $(this).parent().find(".edit-input").show();
+
+  });
+
+  $commentList.on('click', '.edit-book-submit-button', function() {
+    $(this).parent().hide();
+    let newComment = $(this).parent().find("input").val();
+    $.ajax({
+      method: "PUT",
+      url: `/api/books/${ $(this).attr('data-id') }`,
+      data: { text: newComment },
+      success: (comment) => {
+        $(this).parent().parent().find(".book-title").html(comment.text);
+      }
+    })
+
+  })
+
+
+
+
+
+
 });
 
 function getCommentHtml(comment) {
@@ -43,6 +69,7 @@ function getCommentHtml(comment) {
             <b>${comment.text}</b> &nbsp
             by ${comment.author}
           </p>
+          <button class="edit-book-button">Edit</button>
           <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
 
           </div>`;

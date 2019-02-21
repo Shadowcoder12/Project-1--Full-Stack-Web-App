@@ -193,8 +193,8 @@ app.get('/api/categories/:id', (req, res) => {
 });
 
 
-//adding comment 
 
+//displaying all comments
 app.get('/api/comments', (req, res) => {
   db.Comment.find((err, foundComments)=>{
       if(err){
@@ -205,6 +205,7 @@ app.get('/api/comments', (req, res) => {
   });
 });
 
+//adding comments 
 app.post('/api/comments', function (req, res) {
 
   let newComment = new db.Comment({
@@ -218,6 +219,36 @@ app.post('/api/comments', function (req, res) {
         // res.json(newComment);
         res.json(newComment);
       });
+});
+
+
+// updaating comments 
+app.put('/api/comments/:id', function(req,res){
+  // get book id from url params (`req.params`)
+    const commentId = req.params.id;
+  
+    db.Comment.findOneAndUpdate({_id: commentId},req.body,{new:true},(err,updatedComment)=>{
+  
+        if (err) {throw err;}
+        res.json(updatedComment);
+  
+    });
+  
+  });
+  
+
+// deleting comments 
+app.delete('/api/comments/:id', function (req, res) {
+  // get book id from url params (`req.params`)
+  console.log('books delete', req.params);
+  const commentId = req.params.id;
+  // find the index of the book we want to remove
+
+  db.Comment.findOneAndDelete({_id: commentId},(err,deletedComment)=>{
+    if (err) {throw err;}
+    res.json(deletedComment);
+  });
+
 });
 
 // =======================================================
