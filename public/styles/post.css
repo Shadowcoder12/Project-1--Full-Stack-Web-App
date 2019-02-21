@@ -79,7 +79,7 @@ p{
 }
 
 
-.deleteBtn{
+.deleteBtn,.edit-book-button{
     width:100px;
     height: 20px;
     margin-left: 10px;
