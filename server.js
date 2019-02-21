@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./models');
+// const scrp = require('./public/scripts');
 // generate a new express app and call it 'app'
 const app = express();
 
@@ -119,11 +120,9 @@ app.get('/api/categories/:id', (req, res) => {
 
 //adding comment 
 
-
 app.post('/api/categories/:id', function (req, res) {
-
-  const newComment = new db.Comment({
-
+  let newComment = new db.Comment({
+    
       text: req.body.text,
       author:req.body.author,
   });
@@ -133,8 +132,6 @@ app.post('/api/categories/:id', function (req, res) {
         res.json(newComment);
       });
 });
-
-
 
 
 

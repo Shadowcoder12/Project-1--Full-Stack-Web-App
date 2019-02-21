@@ -5,17 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>New Post</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="/styles/editAdd.css">
+
+
 </head>
 <body>
 <!-- we should make category a dropdown list of the available options -->
     <form id="updateForm" onSubmit="submitEditPost()">
-        <input id="formTitle" type="text" name="title" placeholder="Title"/>
-        <input type="text" name="category" placeholder="Category" />
-        <input type="text" name="image" placeholder="Image URL" />
-        <textarea id="postText" name="text" id="new-post-text" cols="30" rows="10"></textarea>
-        <button type="submit">Submit</button>
+       <div><input id="formTitle" type="text" name="title" placeholder="Title"/></div>
+        <div><input type="text" name="category" placeholder="Category" /></div>
+        <div><input type="text" name="image" placeholder="Image URL" /></div>
+        <div><textarea id="postText" name="text" id="new-post-text" cols="30" rows="10"></textarea></div>
+        <div><button type="submit">Submit</button></div>
     </form>
 
     <a href="">back to post</a>
