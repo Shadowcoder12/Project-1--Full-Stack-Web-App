@@ -118,6 +118,25 @@ app.get('/api/categories/:id', (req, res) => {
 });
 
 
+// //getting comments
+
+// app.get('/', function (req, res) {
+//   res.sendFile('views/index.html' , { root : __dirname});
+// });
+
+// // get all books
+// app.get('/api/books', (req, res) => {
+//   db.Book.find((err, foundBooks)=>{
+//       if(err){
+//         console.log("Index Error: " + err)
+//         res.sendStatus(500);
+//       }
+//       res.json(foundBooks);
+//   });
+// });
+
+
+
 //adding comment 
 
 app.post('/api/categories/:id', function (req, res) {
@@ -132,6 +151,7 @@ app.post('/api/categories/:id', function (req, res) {
         res.json(newComment);
       });
 });
+
 
 
 

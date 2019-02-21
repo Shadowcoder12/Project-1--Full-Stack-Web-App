@@ -66,6 +66,8 @@ $(document).ready(function(){
     });
   });
 
+  
+
 
 });
 
@@ -85,7 +87,10 @@ function getCommentHtml(comment) {
 // line 82 
 //             <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
 
-
+// db.Comment.put(commentArray, function(err, comments){
+//   if (err) { return console.log('err', err); }
+//   console.log("created", comments.length, "books");
+// });
 
 function getAllCommentsHtml(comments) {
   console.log(comments.map(getCommentHtml).join(""))
