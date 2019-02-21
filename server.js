@@ -90,6 +90,10 @@ app.get('/categories/:id', (req, res) => {
 });
 
 
+app.get('/comments', (req ,res) => {
+  res.sendFile('views/comments.html' , { root : __dirname});
+});
+
 
 
 
@@ -118,28 +122,20 @@ app.get('/api/categories/:id', (req, res) => {
 });
 
 
-// //getting comments
-
-// app.get('/', function (req, res) {
-//   res.sendFile('views/index.html' , { root : __dirname});
-// });
-
-// // get all books
-// app.get('/api/books', (req, res) => {
-//   db.Book.find((err, foundBooks)=>{
-//       if(err){
-//         console.log("Index Error: " + err)
-//         res.sendStatus(500);
-//       }
-//       res.json(foundBooks);
-//   });
-// });
-
-
 
 //adding comment 
 
-app.post('/api/categories/:id', function (req, res) {
+app.get('/api/comments', (req, res) => {
+  db.Comment.find((err, foundComments)=>{
+      if(err){
+        console.log("Index Error: " + err)
+        res.sendStatus(500);
+      }
+      res.json(foundComments);
+  });
+});
+
+app.post('/api/comments', function (req, res) {
   let newComment = new db.Comment({
     
       text: req.body.text,
@@ -148,6 +144,7 @@ app.post('/api/categories/:id', function (req, res) {
 
       newComment.save((err,newComment)=>{
         if(err){throw err;}
+        // res.json(newComment);
         res.json(newComment);
       });
 });
