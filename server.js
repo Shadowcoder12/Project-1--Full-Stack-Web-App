@@ -112,7 +112,7 @@ app.get('/categories/:id', isLoggedIn , (req, res) => {
 // =======================================================
 
 
-app.get('/comments', (req ,res) => {
+app.get('/comments',isLoggedIn, (req ,res) => {
   res.sendFile('views/comments.html' , { root : __dirname});
 });
 
@@ -212,7 +212,7 @@ app.post('/api/comments', function (req, res) {
       text: req.body.text,
       author:req.body.author,
   });
-
+    
       newComment.save((err,newComment)=>{
         if(err){throw err;}
         // res.json(newComment);
