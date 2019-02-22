@@ -38,7 +38,6 @@ function submitEditPost(e){
         data: data,
         success: ()=>{
             console.log(data);
-            // window.location.search = '';
         }
     });
 }

@@ -7,23 +7,25 @@
 <title>POST LEE App</title>
 
 <!-- STYLESHEETS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="/styles/styles.css">
+<link rel="stylesheet" href="/styles/materialize.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/styles/global.css">
+<link rel="stylesheet" href="/styles/editAdd.css">
 <!-- VENDOR SCRIPTS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 </head>
 <body>
-
         <h1>Sign Up Form</h1>
-
-        <form action="/register" method="POST">
-        <input type="text" name="username" placeholder="username">
-        <input type="password" name="password" placeholder="password">
-        <button>Submit</button>
-        
-        
-        </form>
-
-
+        <div class="container">
+                <form action="/register" method="POST">
+                        <input type="text" name="username" placeholder="username">
+                        <input type="password" name="password" placeholder="password">
+                        <button>Submit</button>
+                </form>
+                <p>Already a member?  Sign in <a href="/login">here</a></p>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="/scripts/materialize.js"></script>
 </body>
 </html>
