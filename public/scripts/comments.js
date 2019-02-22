@@ -34,6 +34,32 @@ $(document).ready(function(){
   });
 
 
+
+  $commentsList.on('click', '.edit-book-button', function() {
+    console.log('clicked edit button');
+    $(this).parent().find(".edit-input").show();
+
+  });
+
+  $commentsList.on('click', '.edit-book-submit-button', function() {
+    $(this).parent().hide();
+    let newComment = $(this).parent().find("input").val();
+    $.ajax({
+      method: "PUT",
+      url: `/api/comments/${ $(this).attr('data-id') }`,
+      data: { text: newComment },
+      success: (comment) => {
+        $(this).parent().parent().find(".comment-text").html(comment.text);
+      }
+    })
+
+  })
+
+
+
+
+
+
 });
 
 function getCommentHtml(comment) {
@@ -43,7 +69,9 @@ function getCommentHtml(comment) {
             <b>${comment.text}</b> &nbsp
             by ${comment.author}
           </p>
+
           <button type="button" name="button" class="deleteBtn" data-id=${comment._id}>Delete</button>
+
 
           </div>`);
     
@@ -77,7 +105,6 @@ function render () {
 };
 
 function handlesSuccess(json) {
-    alert("handlesSuccess");
     console.log(json);
     commentArray = json;
   render();
@@ -98,7 +125,6 @@ function newCommentError() {
 }
 
 function deleteBookSuccess(json) {
-  alert("delete success")
   var comment = json;
   console.log(json);
   var commentId = comment._id;
