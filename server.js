@@ -223,18 +223,16 @@ app.post('/api/comments', function (req, res) {
 
 
 // updaating comments 
-app.put('/api/comments/:id', function(req,res){
+app.put('/api/comments/:id', (req, res) => {
   // get book id from url params (`req.params`)
-    const commentId = req.params.id;
-  
-    db.Comment.findOneAndUpdate({_id: commentId},req.body,{new:true},(err,updatedComment)=>{
-  
-        if (err) {throw err;}
-        res.json(updatedComment);
-  
-    });
-  
+  let commentId = req.params.id;
+  // find the index of the book we want to remove
+  db.Comment.findOneAndUpdate({ _id: commentId }, req.body, {new: true})
+    // .populate('author')
+    .exec((err, updatedComment)=> {
+      res.json(updatedComment);
   });
+});
   
 
 // deleting comments 
