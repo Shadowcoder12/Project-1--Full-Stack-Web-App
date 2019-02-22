@@ -70,6 +70,7 @@ function getCommentHtml(comment) {
             by ${comment.author}
           </p>
           </div>
+          <button class="edit-book-button">Edit</button>
           <button type="button" name="button" class="deleteBtn" data-id=${comment._id}>Delete</button>
 
           </div>`)
