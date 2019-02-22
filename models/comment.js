@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema ({
-author: String, 
-text: String
+    text: String, 
+    author:String 
+
 
 })
 
