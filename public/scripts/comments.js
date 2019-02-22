@@ -1,3 +1,21 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @rhear0yishere Sign out
+1
+0 0 lfonzi62/Full-Stack-API-Project
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
+Full-Stack-API-Project/public/scripts/comments.js
+541e3d8  13 minutes ago
+@rhear0yishere rhear0yishere Merge branch 'master' into rheaR
+@mclausaudio @rhear0yishere
+     
+145 lines (109 sloc)  3.38 KB
 var $commentsList;
 var commentArray = [];
 
@@ -61,7 +79,6 @@ $(document).ready(function(){
 function getCommentHtml(comment) {
   return (`
         <div class = "commentP"
-
           <p>
             <b>${comment.text}</b> &nbsp
             <span class="edit-input" style="display: none">
@@ -70,61 +87,46 @@ function getCommentHtml(comment) {
           </span>
             by ${comment.author}
           </p>
-
-          </div>`;
+          </div>
           <button type="button" name="button" class="deleteBtn" data-id=${comment._id}>Delete</button>
 
-          </div>`);
+          </div>`)
     
-}
-
-
 
 // line 82 
 //             <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
-
-
-
 function getAllCommentsHtml(comments) {
   console.log(comments.map(getCommentHtml).join(""))
   return comments.map(getCommentHtml).join("");
 }
-
 // helper function to render all posts to view
 // note: we empty and re-render the collection each time our post data changes
 function render () {
   // empty existing posts from view
   $commentsList.empty();
-
   // pass `allBooks` into the template function
   var commentsHtml = getAllCommentsHtml(commentArray);
   
-
   // append html to the view
   $commentsList.append(commentsHtml);
   
 };
-
 function handlesSuccess(json) {
     console.log(json);
     commentArray = json;
   render();
 }
-
 function handlesError(e) {
   $('#commentTarget').html('Server is not working');
 }
-
 function newCommentSuccess(json) {
   $('#commentForm input').val('');
   commentArray.push(json);
   render();
 }
-
 function newCommentError() {
   console.log('newComment error!');
 }
-
 function deleteCommentSuccess(json) {
   var comment = json;
   console.log(json);
@@ -139,7 +141,6 @@ function deleteCommentSuccess(json) {
   }
   render();
 }
-
 function deleteCommentError() {
   console.log('deleteComment error!');
 }
