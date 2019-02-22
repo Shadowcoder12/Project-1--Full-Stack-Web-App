@@ -1,6 +1,7 @@
 var $commentsList;
 var commentArray = [];
 
+
 $(document).ready(function(){
 
   $commentsList = $('#commentTarget');
@@ -28,11 +29,10 @@ $(document).ready(function(){
     $.ajax({
       method: 'DELETE',
       url: 'api/comments/'+$(this).attr('data-id'),
-      success: deleteBookSuccess,
-      error: deleteBookError
+      success: deleteCommentSuccess,
+      error: deleteCommentError
     });
   });
-
 
 
   $commentsList.on('click', '.edit-book-button', function() {
@@ -56,22 +56,23 @@ $(document).ready(function(){
   })
 
 
-
-
-
-
 });
 
 function getCommentHtml(comment) {
   return (`
         <div class = "commentP"
+
           <p>
             <b>${comment.text}</b> &nbsp
+            <span class="edit-input" style="display: none">
+            <input type="text" value="${comment.title}" />
+            <button class="edit-book-submit-button" data-id="${comment._id}">Save</button>
+          </span>
             by ${comment.author}
           </p>
 
+          </div>`;
           <button type="button" name="button" class="deleteBtn" data-id=${comment._id}>Delete</button>
-
 
           </div>`);
     
@@ -121,10 +122,10 @@ function newCommentSuccess(json) {
 }
 
 function newCommentError() {
-  console.log('newbook error!');
+  console.log('newComment error!');
 }
 
-function deleteBookSuccess(json) {
+function deleteCommentSuccess(json) {
   var comment = json;
   console.log(json);
   var commentId = comment._id;
@@ -139,6 +140,6 @@ function deleteBookSuccess(json) {
   render();
 }
 
-function deleteBookError() {
-  console.log('deletebook error!');
+function deleteCommentError() {
+  console.log('deleteComment error!');
 }
