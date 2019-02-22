@@ -37,15 +37,15 @@ $(document).ready(function(){
 });
 
 function getCommentHtml(comment) {
-  return `
+  return (`
         <div class = "commentP"
           <p>
             <b>${comment.text}</b> &nbsp
             by ${comment.author}
           </p>
-          <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
+          <button type="button" name="button" class="deleteBtn" data-id=${comment._id}>Delete</button>
 
-          </div>`;
+          </div>`);
     
 }
 

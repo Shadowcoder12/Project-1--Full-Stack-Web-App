@@ -11,6 +11,7 @@
 
 <!-- STYLESHEETS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="/styles/materialize.css">
 <link rel="stylesheet" href="/styles/landing.css">
 <!-- VENDOR SCRIPTS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
@@ -20,32 +21,13 @@
 </head>
 <body>
 <h1> Welcome to PostLee :)</h1>
-<!-- <a href="/categories"><button class="btn btn-light">View More</button> </a> -->
-<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"
-data-accesstype="offline"
-data-redirecturi="http://localhost:3000/categories" ></div> 
 
-<!-- <a href="#" onclick="signOut();">Sign out</a> -->
-<li><a href="/register">Register</a></li>
-<li><a href="/login">Login</a></li>
-<li><a href="/logout">Logout</a></li>
+<div class="landing-buttons">
+    <a class="waves-effect waves-light btn" href="/register">Register</a>
+    <a class="waves-effect waves-light btn" href="/login">Login</a>
+    <!-- <a class="waves-effect waves-light btn" href="/logout">Logout</a> -->
+</div>
 
-<script>
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-}
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-</script>
-
+<script src="/scripts/materialize.js"></script>
 </body>
 </html>

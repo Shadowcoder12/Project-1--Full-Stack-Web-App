@@ -8,30 +8,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/global.css">
     <link rel="stylesheet" href="/styles/post.css">
-    
 </head>
-
-<header>
-    <div class ="postTitle"><h1>Music Post</h1></div>
-    <div class ="authorName"><h3>Author Name</h3>
-    </div>
-
-</header>
-
-
 <body>
-    <div class ="imageDiv">
-        <img id="post-image" > 
+    <nav>
+        <div class="nav-wrapper cyan darken-3">
+            <a href="#" class="brand-logo left">PostLee</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <a class="waves-effect waves-light btn" href="/categories/new">New Post</a>
+                <a class="waves-effect waves-light btn" href="/categories">Back To Categories</a>
+                <a class="waves-effect waves-light btn" href="/logout">Logout</a>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <div class ="postTitle">
+            <h1>Music Post</h1>
+        </div>
+        <div class ="authorName">
+            <h3>Posted by: <span id="author-name"></span></h3>
+        </div>
+    </header>
+    <div class="container center-align post-container">
+        <div class ="imageDiv">
+                <img id="post-image" > 
+        </div>
+        <div id="body-text" class="postText cyan lighten-5">
+        </div>
+        <div class="button-group">
+            <a href="/comments" class="waves-effect waves-light btn">View Comments</a>
+            <div>
+                <a id="deleteLink" class="waves-effect waves-light btn-small red accent-4">Delete Post</a>
+                <a id="editLink" class="waves-effect waves-light btn-small grey darken-2">Edit Post</a>
+            </div>   
+        </div>
     </div>
-    <div>
-        <a id="deleteLink" href="">Delete Post</a>
-        <a id="editLink" href="">Edit Post</a>
-    </div>
-
-    <div id="body-text" class="postText">
-
-    </div>
+    
     <!-- <h1> New Comment</h1>
 
      
@@ -54,7 +69,6 @@
         -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
- <script src="/scripts/post.js"></script>
+    <script src="/scripts/post.js"></script>    
 </body>
 </html>
