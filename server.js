@@ -51,7 +51,7 @@ app.post('/categories/new', (req, res) => {
     image: req.body.image,
     category: req.body.category,
     text: req.body.text,
-    author: req.body.author,
+    author: req.user.username,
     date: Date.now()
   });
   newPost.save((err, post) => {
