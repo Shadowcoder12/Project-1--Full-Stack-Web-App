@@ -193,7 +193,7 @@ app.get('/api/categories/:id', (req, res) => {
 
 
 
-//displaying all comments
+// displaying all comments
 app.get('/api/comments', (req, res) => {
   db.Comment.find((err, foundComments)=>{
       if(err){
@@ -203,6 +203,8 @@ app.get('/api/comments', (req, res) => {
       res.json(foundComments);
   });
 });
+
+
 
 //adding comments 
 app.post('/api/comments', function (req, res) {
@@ -215,19 +217,15 @@ app.post('/api/comments', function (req, res) {
     
       newComment.save((err,newComment)=>{
         if(err){throw err;}
-        // res.json(newComment);
         res.json(newComment);
       });
 });
 
 
-// updaating comments 
+// updating comments 
 app.put('/api/comments/:id', (req, res) => {
-  // get book id from url params (`req.params`)
   let commentId = req.params.id;
-  // find the index of the book we want to remove
   db.Comment.findOneAndUpdate({ _id: commentId }, req.body, {new: true})
-    // .populate('author')
     .exec((err, updatedComment)=> {
       res.json(updatedComment);
   });
@@ -236,10 +234,7 @@ app.put('/api/comments/:id', (req, res) => {
 
 // deleting comments 
 app.delete('/api/comments/:id', function (req, res) {
-  // get book id from url params (`req.params`)
-  console.log('books delete', req.params);
   const commentId = req.params.id;
-  // find the index of the book we want to remove
 
   db.Comment.findOneAndDelete({_id: commentId},(err,deletedComment)=>{
     if (err) {throw err;}

@@ -1,54 +1,60 @@
 var $commentsList;
 var commentArray = [];
 
-
 $(document).ready(function(){
 
-  $commentsList = $('#commentTarget');
+  $commentsList = $('#commentArea');
+  
   $.ajax({
     method: 'GET',
     url: '/api/comments',
-    success: handlesSuccess,
-    error: handlesError
+    success: successFunc,
+    error: serverError
   });
 
-  $('#commentForm').on('submit', function(e) {
+  $('#showComments').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
       method: 'POST',
       url: '/api/comments',
       data: $(this).serialize(),
-      success: newCommentSuccess,
-      error: newCommentError
+      success: newComment,
+      error: commentError
     });
   });
 
 
-  $commentsList.on('click', '.deleteBtn', function() {
+  $commentsList.on('click', '.delete', function() {
     
     $.ajax({
       method: 'DELETE',
       url: 'api/comments/'+$(this).attr('data-id'),
-      success: deleteCommentSuccess,
-      error: deleteCommentError
+      success: deleteSuccess,
+      error: deleteError
     });
   });
 
 
-  $commentsList.on('click', '.edit-book-button', function() {
-    console.log('clicked edit button');
-    $(this).parent().find(".edit-input").show();
+  //once the edit button is clicked, the edit input field will show
+  $commentsList.on('click', '.edit', function() {
+    $(this).parent().find(".editField").show();
 
   });
 
-  $commentsList.on('click', '.edit-book-submit-button', function() {
+  //once the edit button is hit, it hides the original comment
+  $commentsList.on('click', '.editSubmit', function() {
     $(this).parent().hide();
+    //the new comment becomes whatver the value of the edit input field is 
+    //looks for the input which is the edit field
     let newComment = $(this).parent().find("input").val();
+    //replaces new comment with old comment 
     $.ajax({
       method: "PUT",
+      //data id is the comment id 
       url: `/api/comments/${ $(this).attr('data-id') }`,
       data: { text: newComment },
       success: (comment) => {
+        //ancestors
         $(this).parent().parent().find(".comment-text").html(comment.text);
       }
     })
@@ -58,72 +64,76 @@ $(document).ready(function(){
 
 });
 
-function getCommentHtml(comment) {
+function commentTemplate(comment) {
+  //save button and edit input field are hidden until edit button is hit 
   return (`
         <div class = "commentP"
           <p>
             <b>${comment.text}</b> &nbsp
-            <span class="edit-input" style="display: none">
+            <span class="editField" style="display: none">
             <input type="text" value="${comment.title}" />
-            <button class="edit-book-submit-button" data-id="${comment._id}">Save</button>
-          </span>
-            by ${comment.author}
+            <button class="editSubmit" data-id="${comment._id}">Save Comment</button>
+          </span> by ${comment.author}
           </p>
           </div>
-          <button class="edit-book-button">Edit</button>
-          <button type="button" name="button" class="deleteBtn" data-id=${comment._id}>Delete</button>
+          <button class="edit">Edit Comment</button>
+          <button type="button" name="button" class="delete" data-id=${comment._id}>Delete Comment</button>
 
           </div>`)
 };
 
-// line 82 
-//             <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
-function getAllCommentsHtml(comments) {
-  console.log(comments.map(getCommentHtml).join(""))
-  return comments.map(getCommentHtml).join("");
+//comments = commentArray 
+
+function everyComment(comments) {
+  //taking comment array and passing it through the comment template 
+  //returns new array that has the comments joined 
+  return comments.map(commentTemplate).join("");
 }
-// helper function to render all posts to view
-// note: we empty and re-render the collection each time our post data changes
+//renders the posts 
 function render () {
-  // empty existing posts from view
-  $commentsList.empty();
-  // pass `allBooks` into the template function
-  var commentsHtml = getAllCommentsHtml(commentArray);
   
-  // append html to the view
+  $commentsList.empty();
+  //calling the everyComment function
+  var commentsHtml = everyComment(commentArray);
+  
+ //the html gets appended to the comment area
   $commentsList.append(commentsHtml);
   
 };
-function handlesSuccess(json) {
-    console.log(json);
+function successFunc(json) {
+  //posts comment array to the commentArea
     commentArray = json;
+    //renders posts if successfull 
   render();
 }
-function handlesError(e) {
-  $('#commentTarget').html('Server is not working');
+
+function serverError(e) {
+  $('#commentArea').html('Nothing in server :(');
 }
-function newCommentSuccess(json) {
-  $('#commentForm input').val('');
+
+//gets value (text) of input and pushes it into the array 
+function newComment(json) {
+  $('#showComments input').val('');
   commentArray.push(json);
   render();
 }
-function newCommentError() {
-  console.log('newComment error!');
+function commentError() {
+  alert("Couldn't post comment! :(");
 }
-function deleteCommentSuccess(json) {
+
+function deleteSuccess(json) {
   var comment = json;
-  console.log(json);
   var commentId = comment._id;
-  console.log('delete book', commentId);
-  // find the book with the correct ID and remove it from our allBooks array
-  for(var index = 0; index < commentArray.length; index++) {
-    if(commentArray[index]._id === commentId) {
-      commentArray.splice(index, 1);
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+ //changing the contents of the array 
+  for(var i = 0; i < commentArray.length; i++) {
+    if(commentArray[i]._id === commentId) {
+      commentArray.splice(i, 1);
+      break; 
     }
   }
+  //rendering newly spliced array 
   render();
 }
-function deleteCommentError() {
-  console.log('deleteComment error!');
+function deleteError() {
+  alert("Couldn't delete comment! :(");
 }
