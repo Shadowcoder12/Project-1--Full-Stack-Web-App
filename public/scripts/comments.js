@@ -1,21 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @rhear0yishere Sign out
-1
-0 0 lfonzi62/Full-Stack-API-Project
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-Full-Stack-API-Project/public/scripts/comments.js
-541e3d8  13 minutes ago
-@rhear0yishere rhear0yishere Merge branch 'master' into rheaR
-@mclausaudio @rhear0yishere
-     
-145 lines (109 sloc)  3.38 KB
 var $commentsList;
 var commentArray = [];
 
@@ -91,7 +73,7 @@ function getCommentHtml(comment) {
           <button type="button" name="button" class="deleteBtn" data-id=${comment._id}>Delete</button>
 
           </div>`)
-    
+};
 
 // line 82 
 //             <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${comment._id}>Delete</button>
