@@ -1,86 +1,26 @@
-
-body{
-    text-align: center;   
-    background-image: linear-gradient(rgb(31, 33, 55), rgb(12, 12, 7));
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100%;  
-}
-
-header,label,.commentP,.postText{
-    color:white;
-}
-h1{
-    color:rgb(18, 85, 106);
-}
-
-div{
-    display: flex;
-}
-header{
-    margin-bottom: 100px;
-}
-
- textarea{
-    height: 200px;
-}
-
-.commentAuthor, textarea{
-    width:900px;
-}
-
-button, .postText{
-    width: 70%;
-}
-
-.postText{
-   display: inline-block;
-}
-
 img{
-    height:400px;
-    width: 400px; 
+    height: 80%;
+    width: 80%; 
     border:2px inset white; 
 }
 
-.imageDiv, #commentTarget{
-    display:block;
+.imageDiv {
+    margin:2em;
 }
 
-.newComment, .imageDiv, .commentP, #userComment{
-    justify-content: center;
+.postText {
+    padding: 2em;
+    margin-bottom: 1em;
 }
 
-#userComment{
-    height: 100px;
+.post-container {
+    margin-bottom: 2em;
 }
 
-#commentTarget{
-    height:200px;
+.button-group a {
+    margin-bottom: 1em;
 }
 
-#commentTarget hr{
-    display:none;
-}
- #commentTarget{
-    margin-top:100px;
-    height: 200px;
-    overflow-y:scroll;
-
-}
-
-p{
+p {
     background-color: rgb(18, 85, 106);
-}
-
-.commentInput{
-    width:700px;
-}
-
-
-.deleteBtn,.edit-book-button{
-    width:100px;
-    height: 20px;
-    margin-left: 10px;
 }

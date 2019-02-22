@@ -51,6 +51,7 @@ app.post('/categories/new', (req, res) => {
     image: req.body.image,
     category: req.body.category,
     text: req.body.text,
+    author: req.body.author,
     date: Date.now()
   });
   newPost.save((err, post) => {
@@ -99,18 +100,14 @@ app.get('/categories/travel', isLoggedIn, (req, res) => {
 app.get('/categories/animals', isLoggedIn , (req ,res) => {
   res.sendFile('views/category.html' , { root : __dirname});
 });
-
 // show html page for specific route
 app.get('/categories/:id', isLoggedIn , (req, res) => {
   res.sendFile('views/post.html', {root: __dirname } );
 });
 
-
-
 // =======================================================
 // AUTH ROUTES
 // =======================================================
-
 
 app.get('/comments', (req ,res) => {
   res.sendFile('views/comments.html' , { root : __dirname});

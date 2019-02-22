@@ -21,6 +21,8 @@ const handleResponse = (json) =>  {
 $('h1').text(`${json.title}`)
 //set image
 $('#post-image').attr('src', `${json.image}`)
+//set author name
+$('#author-name').text(`${json.author}`)
 //set paragraph text
 $('#body-text').text(`${json.text}`)
 }
