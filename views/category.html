@@ -11,24 +11,31 @@
 
 
 <!-- STYLESHEETS -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-<link rel="stylesheet" href="/styles/music.css">
+<link rel="stylesheet" href="/styles/materialize.css">
+<link rel="stylesheet" href="/styles/category.css">
+<link rel="stylesheet" href="/styles/global.css">
 <!-- VENDOR SCRIPTS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 </head>
 <body>
-<nav>
-    <a href="/categories/new">New Post</a>
-    <a href="/categories">Back To Categories</a>
-</nav>
-
-<h1 class="category-header"></h1>
-<div class="posts-list">
-</div>   
-
-
+    <nav>
+        <div class="nav-wrapper cyan darken-3">
+            <a href="#" class="brand-logo left">PostLee</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <a class="waves-effect waves-light btn" href="/categories/new">New Post</a>
+                <a class="waves-effect waves-light btn" href="/categories">Back To Categories</a>
+                <a class="waves-effect waves-light btn" href="/logout">Logout</a>
+            </ul>
+        </div>
+    </nav>
+<div class="container">
+        <h1 class="category-header"></h1>
+        <div class="posts-list row">
+        </div>   
+</div>
 <!-- APPLICATION SCRIPTS -->
+<script src="/scripts/materialize.js"></script>
 <script src="/scripts/category.js"></script>
 
 </body>

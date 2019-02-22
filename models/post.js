@@ -8,6 +8,7 @@ const PostSchema = new Schema ({
     image: String,
     date: String,
     text: String,
+    author: String,
     comment: [Comment.schema]
     });
 

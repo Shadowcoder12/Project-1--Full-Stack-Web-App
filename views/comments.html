@@ -6,23 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/global.css">
     <link rel="stylesheet" href="/styles/post.css">
-    
+    <link rel="stylesheet" href="/styles/editAdd.css">
 </head>
-
-<header>
-</header>
-
-
 <body>
-
-     
-
-     
+    <nav>
+        <div class="nav-wrapper cyan darken-3">
+            <a href="#" class="brand-logo left">PostLee</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <a class="waves-effect waves-light btn" href="/categories/new">New Post</a>
+                <a class="waves-effect waves-light btn" href="/categories">Back To Categories</a>
+                <a class="waves-effect waves-light btn" href="/logout">Logout</a>
+            </ul>
+        </div>
+    </nav>
         <div id= "userComment">
             <form method= "POST" action= "/api/comments"
-            <form  id="commentForm"> 
-                <p><label for="title">Comment</label><br></p>
+            <form  id="commentForm">
+                <label for="title">Comment</label><br>
                 <p><input class ="commentInput" type="text" name="text" placeholder="Comment"></p>
                 <p><label for="title">Author</label></p>
                 <p><input type="text"  name="author" placeholder="Author"></p>
@@ -30,22 +34,10 @@
               <button type="submit" class="btn btn-default">Post Comment</button>
             </form>
           </div>
-        
             <div id='commentTarget'>
             </div>
-            <!-- <form action="/api/categories/comments" method="POST">
-        
-              <div><input type="text" name="title" placeholder="Title" /></div>
-          <div>
-          <textarea name="text" id="new-post-text" cols="30" rows="10"></textarea>
-          </div>
-          <div>
-              <button type="submit">Submit</button>
-          </div>
-          </form> -->
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
- <script src="/scripts/comments.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <script src="/scripts/comments.js"></script>
 </body>
 </html>
