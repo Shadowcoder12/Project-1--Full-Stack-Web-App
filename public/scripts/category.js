@@ -20,19 +20,30 @@ console.log(json)
         let title = json[i].title;
         let imageSrc = json[i].image;
         let date = json[i].date;
-        let text = json[i].text;
+        let author = json[i].author;
+        // let text = json[i].text;
         let postId = json[i]._id;
+
+        let convertedDate = new Date(Number(date));
+
         // appending different categories to certain parts of the page
 
-        // will need to add an Author string to the model
         if (category === pageCategory) {
             $('.posts-list').append(`
-                <div class="post-preview">
-                    <h2 class="header">${title}</h2>
-                    <h3>Created By: Author</h3>
-                    <p>${date}</p> 
-                    <img src= '${imageSrc}'>
-                    <a href="/categories/${postId}">View Post</a>
+                <div class="col sm12 m4">
+                    <div class="card cyan darken-3 hoverable">
+                        <div class="card-image">
+                            <img src='${imageSrc}'>
+                            <span class="card-title">${title}</span>
+                        </div>
+                        <div class="card-content">
+                            <h5>Created By: ${author}</h5>
+                            <h6>Created On: ${convertedDate}</h6> 
+                        </div>
+                        <div class="card-action">
+                            <a href="/categories/${postId}">View Post</a>
+                        </div>
+                    </div>
                 </div>`); 
         }
 

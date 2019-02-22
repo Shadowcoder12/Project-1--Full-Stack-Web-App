@@ -5,37 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>New Post</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/global.css">
+    <link rel="stylesheet" href="/styles/post.css">
     <link rel="stylesheet" href="/styles/editAdd.css">
     
 </head>
 <body>
+        <nav>
+                <div class="nav-wrapper cyan darken-3">
+                    <a href="#" class="brand-logo left">PostLee</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <a class="waves-effect waves-light btn" href="/categories/new">New Post</a>
+                        <a class="waves-effect waves-light btn" href="/categories">Back To Categories</a>
+                        <a class="waves-effect waves-light btn" href="/logout">Logout</a>
+                    </ul>
+                </div>
+            </nav>
 <!-- we should make category a dropdown list of the available options -->
-    
-    <form action="/categories/new" method="POST">
-        
-        <div><input type="text" name="title" placeholder="Title" /></div>
-        <div>
-        <select name="category">
-            <option value="Music">Music</option>
-            <option value="Sports">Sports</option>
-            <option value="Food">Food</option>
-            <option value="Travel">Travel</option>
-            <option value="Animals">Animals</option>
-        </select>
-        </div>
-
-    
-    <div>
-        <input type="text" name="image" placeholder="Image URL" />
+    <div class="container">
+        <form action="/categories/new" method="POST">
+            <div><input type="text" name="title" placeholder="Title" /></div>
+            <div class="input-field col s12">
+                <select name="category">
+                    <option value="" disabled selected>Choose your category</option>
+                    <option value="Music">Music</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Animals">Animals</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" name="image" placeholder="Image URL" />
+            </div>
+            <div>
+                <textarea name="text" id="new-post-text" cols="50" rows="20"></textarea>
+            </div>
+            <div>
+                <input type="text" name="author" placeholder="Author name" />
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
     </div>
-
-    <div>
-    <textarea name="text" id="new-post-text" cols="30" rows="10"></textarea>
-    </div>
-    <div>
-        <button type="submit">Submit</button>
-    </div>
-    </form>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="/scripts/materialize.js"></script>
+    <script src="/scripts/new_post.js"></script>
 </body>
 </html>
