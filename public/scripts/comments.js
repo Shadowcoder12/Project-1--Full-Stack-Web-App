@@ -3,7 +3,8 @@ var commentArray = [];
 
 $(document).ready(function(){
 
-  $commentsList = $('#commentTarget');
+  $commentsList = $('#commentArea');
+  
   $.ajax({
     method: 'GET',
     url: '/api/comments',
@@ -72,8 +73,7 @@ function commentTemplate(comment) {
             <span class="editField" style="display: none">
             <input type="text" value="${comment.title}" />
             <button class="editSubmit" data-id="${comment._id}">Save Comment</button>
-          </span>
-            by ${comment.author}
+          </span> by ${comment.author}
           </p>
           </div>
           <button class="edit">Edit Comment</button>
@@ -82,30 +82,36 @@ function commentTemplate(comment) {
           </div>`)
 };
 
+//comments = commentArray 
+
 function everyComment(comments) {
-  console.log(comments.map(commentTemplate).join(""))
+  //taking comment array and passing it through the comment template 
+  //returns new array that has the comments joined 
   return comments.map(commentTemplate).join("");
 }
-// helper function to render all posts to view
-// note: we empty and re-render the collection each time our post data changes
+//renders the posts 
 function render () {
   
   $commentsList.empty();
-
+  //calling the everyComment function
   var commentsHtml = everyComment(commentArray);
   
- 
+ //the html gets appended to the comment area
   $commentsList.append(commentsHtml);
   
 };
 function successFunc(json) {
-    console.log(json);
+  //posts comment array to the commentArea
     commentArray = json;
+    //renders posts if successfull 
   render();
 }
+
 function serverError(e) {
-  $('#commentTarget').html('Server is not working');
+  $('#commentArea').html('Nothing in server :(');
 }
+
+//gets value (text) of input and pushes it into the array 
 function newComment(json) {
   $('#showComments input').val('');
   commentArray.push(json);
@@ -114,17 +120,18 @@ function newComment(json) {
 function commentError() {
   alert("Couldn't post comment! :(");
 }
+
 function deleteSuccess(json) {
   var comment = json;
-  console.log(json);
   var commentId = comment._id;
- 
+ //changing the contents of the array 
   for(var i = 0; i < commentArray.length; i++) {
     if(commentArray[i]._id === commentId) {
       commentArray.splice(i, 1);
       break; 
     }
   }
+  //rendering newly spliced array 
   render();
 }
 function deleteError() {
